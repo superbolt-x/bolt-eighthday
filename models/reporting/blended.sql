@@ -53,6 +53,17 @@ SELECT channel, date::date as date, date_granularity,
             0 as net_sales, 0 as first_orders, 0 as repeat_orders,
             -- ga
             sessions
-        FROM {{ source('reporting', 'ga4_performance_by_campaign') }})
+        FROM {{ source('reporting', 'ga4_performance_by_campaign') }}
+    
+        UNION ALL
+        
+        SELECT 'Google Analytics' as channel, date, date_granularity, 
+            --paid 
+            0 as spend, 0 as paid_purchases, 0 as paid_revenue, 0 as clicks, 0 as impressions, 
+            -- shopify
+            0 as net_sales, 0 as first_orders, 0 as repeat_orders,
+            -- ga
+            sessions
+        FROM {{ source('reporting', 'googleanalytics_performance_by_campaign') }})
     
     GROUP BY channel, date, date_granularity
