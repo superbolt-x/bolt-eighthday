@@ -20,7 +20,7 @@ SELECT channel, date::date as date, date_granularity,
             0 as net_sales, 0 as first_orders, 0 as repeat_orders,
             -- ga
             0 as sessions
-        FROM {{ source('reporting', 'googleads_campaign_performance') }}
+        FROM {{ ref('googleads_campaign_performance') }}
         
         UNION ALL
         
@@ -31,7 +31,7 @@ SELECT channel, date::date as date, date_granularity,
             0 as net_sales, 0 as first_orders, 0 as repeat_orders,
             -- ga
             0 as sessions
-        FROM {{ source('reporting', 'facebook_ad_performance') }}  
+        FROM {{ ref('facebook_ad_performance') }}  
         
         UNION ALL
         
@@ -42,7 +42,7 @@ SELECT channel, date::date as date, date_granularity,
             net_sales, first_orders, repeat_orders,
             -- ga
             0 as sessions
-        FROM {{ source('reporting', 'shopify_sales') }} 
+        FROM {{ ref('shopify_sales') }} 
         
         UNION ALL
         
@@ -53,7 +53,7 @@ SELECT channel, date::date as date, date_granularity,
             0 as net_sales, 0 as first_orders, 0 as repeat_orders,
             -- ga
             sessions
-        FROM {{ source('reporting', 'ga4_performance_by_campaign') }}
+        FROM {{ ref('ga4_performance_by_campaign') }}
     
         UNION ALL
         
@@ -64,6 +64,6 @@ SELECT channel, date::date as date, date_granularity,
             0 as net_sales, 0 as first_orders, 0 as repeat_orders,
             -- ga
             sessions
-        FROM {{ source('reporting', 'googleanalytics_performance_by_campaign') }})
+        FROM {{ ref('googleanalytics_performance_by_campaign') }})
     
     GROUP BY channel, date, date_granularity
