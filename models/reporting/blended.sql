@@ -1,5 +1,5 @@
 {{ config (
-    alias = target.database + '_blended'
+    alias = target.database + '_blended_performance'
 )}}
 
 SELECT channel, date::date as date, date_granularity,
