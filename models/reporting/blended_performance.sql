@@ -53,7 +53,7 @@ SELECT channel, date::date as date, date_granularity,
             0 as net_sales, 0 as first_orders, 0 as repeat_orders,
             -- ga
             sessions
-        FROM {{ ref('ga4_performance_by_campaign') }}
+        FROM {{ ref('ga4_campaign_performance') }}
     
         UNION ALL
         
