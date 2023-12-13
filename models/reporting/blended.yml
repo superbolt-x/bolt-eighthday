@@ -17,5 +17,8 @@ sources:
       - name: ga4_performance_by_campaign
         identifier: eighthday_ga4_performance_by_campaign
 
+      - name: ga4_campaign_performance
+        identifier: eighthday_ga4_campaign_performance
+
       - name: googleanalytics_performance_by_campaign
         identifier: eighthday_googleanalytics_performance_by_campaign
